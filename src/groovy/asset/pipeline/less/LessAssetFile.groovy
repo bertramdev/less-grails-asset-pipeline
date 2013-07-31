@@ -17,7 +17,6 @@ class LessAssetFile {
 		for(processor in processors) {
 			def processInstance = processor.newInstance()
 			fileText = processInstance.process(fileText)
-			// TODO Iterate Over Processors
 		}
 		return fileText
 		// Return File Stream
