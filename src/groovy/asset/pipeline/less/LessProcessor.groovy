@@ -45,7 +45,7 @@ class LessProcessor {
     context.evaluateReader(globalScope, new InputStreamReader(inputStream, 'UTF-8'), resource.filename, 0, null)
   }
 
-  def process(String input) {
+  def process(input, assetFile) {
     try {
       def paths = AssetHelper.getAssetPaths()
       def pathstext = paths.collect{
