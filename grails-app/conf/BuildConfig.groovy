@@ -7,11 +7,13 @@ grails.project.dependency.resolution = {
 
 	repositories {
 		grailsCentral()
+		grailsPlugins()
+		mavenCentral()
 	}
 
 	plugins {
 
-		runtime ":asset-pipeline:0.1.7"
+		runtime ":asset-pipeline:0.2.1"
 
 		build ':release:2.2.1', ':rest-client-builder:1.0.3', {
 			export = false
