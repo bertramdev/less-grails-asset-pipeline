@@ -7,9 +7,10 @@ class LessAssetFile {
 	static processors = [LessProcessor,CssProcessor]
 
 	File file
-
-	LessAssetFile(file) {
+	def baseFile
+	LessAssetFile(file, baseFile=null) {
 		this.file = file
+		this.baseFile = baseFile
 	}
 
 	def processedStream() {
