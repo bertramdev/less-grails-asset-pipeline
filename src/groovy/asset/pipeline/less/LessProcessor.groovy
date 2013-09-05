@@ -1,6 +1,7 @@
 package asset.pipeline.less
 import asset.pipeline.AssetHelper
 import org.mozilla.javascript.Context
+import org.mozilla.javascript.JavaScriptException
 import org.mozilla.javascript.Scriptable
 import org.mozilla.javascript.NativeArray
 import org.springframework.core.io.ClassPathResource
@@ -64,6 +65,11 @@ class LessProcessor {
 
       def result = cx.evaluateString(compileScope, "compile(lessSrc, ${pathstext})", "LESS compile command", 0, null)
       return result
+    } catch (JavaScriptException e) {
+      throw new Exception("""
+        LESS Engine compilation of LESS to CSS failed.
+        $e: ${e.value}
+        """,e)
     } catch (Exception e) {
       throw new Exception("""
         LESS Engine compilation of LESS to CSS failed.
