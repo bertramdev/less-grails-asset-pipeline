@@ -6,14 +6,17 @@ import org.mozilla.javascript.Scriptable
 import org.mozilla.javascript.NativeArray
 import org.springframework.core.io.ClassPathResource
 import groovy.util.logging.Log4j
+import asset.pipeline.CacheManager
 
 @Log4j
 class LessProcessor {
-
+  public static final java.lang.ThreadLocal threadLocal = new ThreadLocal();
   Scriptable globalScope
   ClassLoader classLoader
+  def precompilerMode
 
-  LessProcessor(){
+  LessProcessor(precompiler=false){
+    this.precompilerMode = precompiler
     try {
       classLoader = getClass().getClassLoader()
 
@@ -48,6 +51,10 @@ class LessProcessor {
 
   def process(input, assetFile) {
     try {
+      if(!this.precompilerMode) {
+        threadLocal.set(assetFile);
+      }
+
       def paths = AssetHelper.getAssetPaths()
       def pathstext = paths.collect{
         def p = it.replaceAll("\\\\", "/")
@@ -85,6 +92,7 @@ class LessProcessor {
   }
 
   static String resolveUri(String path, NativeArray paths) {
+    def assetFile = threadLocal.get();
     log.debug "resolveUri: path=${path}"
     for (Object index : paths.getIds()) {
       def it = paths.get(index, null)
@@ -92,6 +100,9 @@ class LessProcessor {
       log.trace "test exists: ${file}"
       if (file.exists()) {
         log.trace "found file: ${file}"
+        if(assetFile) {
+          CacheManager.addCacheDependency(assetFile.file.canonicalPath, file)
+        }
         return file.toURI().toString()
       }
     }

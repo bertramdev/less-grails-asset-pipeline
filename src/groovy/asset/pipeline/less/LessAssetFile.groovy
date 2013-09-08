@@ -1,5 +1,8 @@
 package asset.pipeline.less
+import asset.pipeline.CacheManager
+import asset.pipeline.AssetHelper
 import asset.pipeline.processors.CssProcessor
+
 class LessAssetFile {
 	static final String contentType = 'text/css'
 	static extensions = ['less', 'css.less']
@@ -13,12 +16,26 @@ class LessAssetFile {
 		this.baseFile = baseFile
 	}
 
-	def processedStream() {
+	def processedStream(precompiler=false) {
 		def fileText = file?.text
+		def md5
+		if(!precompiler) {
+			def cache = CacheManager.findCache(file.canonicalPath, fileText)
+			if(cache) {
+				return cache
+			} else {
+				md5 = AssetHelper.getByteDigest(fileText.bytes)
+			}
+		}
 		for(processor in processors) {
-			def processInstance = processor.newInstance()
+			def processInstance = processor.newInstance(precompiler)
 			fileText = processInstance.process(fileText, this)
 		}
+
+		if(!precompiler) {
+			CacheManager.createCache(file.canonicalPath,md5,fileText)
+		}
+
 		return fileText
 		// Return File Stream
 	}
