@@ -18,13 +18,11 @@ class LessAssetFile {
 
 	def processedStream(precompiler=false) {
 		def fileText = file?.text
-		def md5
+		def md5 = AssetHelper.getByteDigest(fileText.bytes)
 		if(!precompiler) {
-			def cache = CacheManager.findCache(file.canonicalPath, fileText)
+			def cache = CacheManager.findCache(file.canonicalPath, md5)
 			if(cache) {
 				return cache
-			} else {
-				md5 = AssetHelper.getByteDigest(fileText.bytes)
 			}
 		}
 		for(processor in processors) {

@@ -54,8 +54,9 @@ class LessProcessor {
       if(!this.precompilerMode) {
         threadLocal.set(assetFile);
       }
+      def paths = [assetFile.file.getParent()]
+      paths += AssetHelper.getAssetPaths()
 
-      def paths = AssetHelper.getAssetPaths()
       def pathstext = paths.collect{
         def p = it.replaceAll("\\\\", "/")
         if (p.endsWith("/")) {
