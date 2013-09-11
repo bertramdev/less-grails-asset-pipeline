@@ -21,3 +21,12 @@ Simply create files in your standard `assets/stylesheets` folder with extension 
 @import 'test'
 
 ```
+
+Production
+----------
+During war build your less files are compiled into css files. This is all well and good but sometimes you dont want each individual less file compiled, but rather your main base less file. It may be best to add a sub folder for those LESS files and exclude it in your precompile config...
+
+Config.groovy:
+```groovy
+grails.assets.excludes = ["mixins/*.less"]
+```
