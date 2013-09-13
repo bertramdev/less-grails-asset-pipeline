@@ -178,7 +178,7 @@ Envjs.connection = function(xhr, responseHandler, data){
  * @param {Object} base  (semi-optional)  The base url used in resolving "path" above
  */
 Envjs.uri = function(path, base) {
-    console.log('constructing uri from path %s and base %s', path, base);
+    // console.log('constructing uri from path %s and base %s', path, base);
 
     // Semi-common trick is to make an iframe with src='javascript:false'
     //  (or some equivalent).  By returning '', the load is skipped
@@ -200,7 +200,7 @@ Envjs.uri = function(path, base) {
     if (!base) {
 
         var newurl = new String(Packages.asset.pipeline.less.LessProcessor.resolveUri(path, globalPaths));
-        console.log('newurl is [%s]', newurl);
+        // console.log('newurl is [%s]', newurl);
         return newurl;
     }
 

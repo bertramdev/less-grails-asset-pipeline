@@ -1,5 +1,5 @@
 function print(text) {
-	Packages.asset.pipeline.less.LessProcessor.print(text);
+	// Packages.asset.pipeline.less.LessProcessor.print(text);
 	// Packages.java.io.System.out.println(text)
     // Packages.com.groovydev.less.Shell.print(text);
 }
