@@ -60,6 +60,7 @@ class LessProcessor {
       // paths += [assetFile.file.getParent()]
       def paths = AssetHelper.getAssetPaths()
       def relativePaths = paths.collect { [it,assetRelativePath].join(AssetHelper.DIRECTIVE_FILE_SEPARATOR)}
+      // println paths
       paths = relativePaths + paths
 
 
