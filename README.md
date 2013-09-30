@@ -22,6 +22,14 @@ Simply create files in your standard `assets/stylesheets` folder with extension 
 
 ```
 
+Including Less files into your GSP files is easy but there are a few things worth mentioning. Say we have a file called `application.less`. You would include it into your gsp by its compiled extension instead of its original extension. aka, use `.css` instead of `.less`
+
+```gsp
+<head>
+  <asset:stylesheet src="application.css"/>
+</head>
+```
+
 Production
 ----------
 During war build your less files are compiled into css files. This is all well and good but sometimes you dont want each individual less file compiled, but rather your main base less file. It may be best to add a sub folder for those LESS files and exclude it in your precompile config...
