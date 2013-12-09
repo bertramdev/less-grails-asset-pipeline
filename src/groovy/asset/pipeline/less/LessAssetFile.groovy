@@ -11,13 +11,21 @@ class LessAssetFile {
 
 	File file
 	def baseFile
+	def encoding
+
 	LessAssetFile(file, baseFile=null) {
 		this.file = file
 		this.baseFile = baseFile
 	}
 
 	def processedStream(precompiler=false) {
-		def fileText = file?.text
+		def fileText
+		if(baseFile?.encoding || encoding) {
+			fileText = file?.text(baseFile?.encoding ? baseFile.encoding : encoding)
+		} else {
+			fileText = file?.text
+		}
+
 		def md5 = AssetHelper.getByteDigest(fileText.bytes)
 		if(!precompiler) {
 			def cache = CacheManager.findCache(file.canonicalPath, md5)
