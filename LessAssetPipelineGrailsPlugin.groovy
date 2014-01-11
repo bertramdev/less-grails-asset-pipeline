@@ -2,7 +2,7 @@ import asset.pipeline.AssetHelper
 import asset.pipeline.less.LessAssetFile
 
 class LessAssetPipelineGrailsPlugin {
-    def version = "1.2.0"
+    def version = "1.2.1"
     def grailsVersion = "2.0 > *"
     def title = "LESS Asset-Pipeline Plugin"
     def author = "David Estes"
