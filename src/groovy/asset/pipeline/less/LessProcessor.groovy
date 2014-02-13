@@ -82,10 +82,33 @@ class LessProcessor {
       def result = cx.evaluateString(compileScope, "compile(lessSrc, ${pathstext})", "LESS compile command", 0, null)
       return result
     } catch (JavaScriptException e) {
-      throw new Exception("""
-        LESS Engine compilation of LESS to CSS failed.
-        $e: ${e.value}
-        """,e)
+              // [type:Name, message:variable @alert-padding is undefined, filename:input, index:134.0, line:10.0, callLine:NaN, callExtract:null, stack:null, column:11.0, extract:[.alert {,   padding: @alert-padding;,   margin-bottom: @line-height-computed;]
+      org.mozilla.javascript.NativeObject errorMeta = (org.mozilla.javascript.NativeObject)e.value
+
+      def errorDetails = "LESS Engine Compiler Failed - ${assetFile.file.name}.\n"
+      if(precompilerMode) {
+        errorDetails += "**Did you mean to compile this file individually (check docs on exclusion)?**\n"
+      }
+      if(errorMeta && errorMeta.get('message')) {
+
+        errorDetails += " -- ${errorMeta.get('message')} Near Line: ${errorMeta.line}, Column: ${errorMeta.column}\n"
+      }
+      if(errorMeta != null && errorMeta.get('extract') != null) {
+        List extractArray = (org.mozilla.javascript.NativeArray)errorMeta.get('extract')
+        errorDetails += "    --------------------------------------------\n"
+        extractArray.each { error ->
+          errorDetails += "    ${error}\n"
+        }
+        errorDetails += "    --------------------------------------------\n\n"
+      }
+
+      if(precompilerMode && !assetFile.baseFile) {
+        log.error(errorDetails)
+        return input
+      } else {
+        throw new Exception(errorDetails,e)
+      }
+
     } catch (Exception e) {
       throw new Exception("""
         LESS Engine compilation of LESS to CSS failed.
