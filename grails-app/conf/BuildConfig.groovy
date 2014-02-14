@@ -11,6 +11,10 @@ grails.project.dependency.resolution = {
 		mavenCentral()
 	}
 
+	dependencies {
+		compile "com.github.sommeri:less4j:1.3.0"
+	}
+
 	plugins {
 
 		runtime ":asset-pipeline:1.5.0"

@@ -30,6 +30,17 @@ Including Less files into your GSP files is easy but there are a few things wort
 </head>
 ```
 
+Less4j Support
+--------------
+
+This plugin also supports compiling your less files with less4j instead of the standard less compiler. To Turn this on you must adjust your config:
+
+```
+grails.assets.less.compiler = 'less4j'
+```
+
+Get Ready for a SIGNIFICANT **Performance** boost!
+
 Production
 ----------
 During war build your less files are compiled into css files. This is all well and good but sometimes you dont want each individual less file compiled, but rather your main base less file. It may be best to add a sub folder for those LESS files and exclude it in your precompile config...
