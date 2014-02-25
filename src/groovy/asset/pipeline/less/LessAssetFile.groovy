@@ -3,13 +3,13 @@ import asset.pipeline.CacheManager
 import asset.pipeline.AssetHelper
 import asset.pipeline.AbstractAssetFile
 import asset.pipeline.processors.CssProcessor
-import org.codehaus.groovy.grails.commons.ApplicationHolder
 
 class LessAssetFile extends AbstractAssetFile {
 	static final String contentType = 'text/css'
 	static extensions = ['less', 'css.less']
 	static final String compiledExtension = 'css'
 	static processors = [CssProcessor]
+	static compilerMode = 'standard'
 
 	String processedStream(Boolean precompiler) {
 		def fileText
@@ -28,10 +28,9 @@ class LessAssetFile extends AbstractAssetFile {
 				return cache
 			}
 		}
-		def grailsApplication = ApplicationHolder.getApplication()
+		
 		def lessProcessor
-		if(grailsApplication.config.grails.assets.less.compiler == 'less4j') {
-			println "Compiling in Less4j mode"
+		if(compilerMode) {
 			lessProcessor = new Less4jProcessor(precompiler)
 		} else {
 			lessProcessor = new LessProcessor(precompiler)

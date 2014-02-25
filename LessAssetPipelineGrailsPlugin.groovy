@@ -2,7 +2,7 @@ import asset.pipeline.AssetHelper
 import asset.pipeline.less.LessAssetFile
 
 class LessAssetPipelineGrailsPlugin {
-    def version = "1.5.2"
+    def version = "1.5.3"
     def grailsVersion = "2.0 > *"
     def title = "LESS Asset-Pipeline Plugin"
     def author = "David Estes"
@@ -17,6 +17,11 @@ class LessAssetPipelineGrailsPlugin {
 
     def doWithDynamicMethods = { ctx ->
         AssetHelper.assetSpecs << LessAssetFile
+
+        if(application.config.grails.assets.less.compiler == 'less4j') {
+            LessAssetFile.compilerMode = 'less4j'
+        }
+
     }
 
 }
