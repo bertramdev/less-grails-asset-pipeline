@@ -30,7 +30,7 @@ class LessAssetFile extends AbstractAssetFile {
 		}
 		
 		def lessProcessor
-		if(compilerMode) {
+		if(compilerMode == 'less4j') {
 			lessProcessor = new Less4jProcessor(precompiler)
 		} else {
 			lessProcessor = new LessProcessor(precompiler)
