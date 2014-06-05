@@ -23,7 +23,7 @@ class LessProcessor {
       def shellJsResource    = new ClassPathResource('asset/pipeline/less/shell.js', classLoader)
       def envRhinoJsResource = new ClassPathResource('asset/pipeline/less/env.rhino.js', classLoader)
       def hooksJsResource    = new ClassPathResource('asset/pipeline/less/hooks.js', classLoader)
-      def lessJsResource     = new ClassPathResource('asset/pipeline/less/less-1.6.0.js', classLoader)
+      def lessJsResource     = new ClassPathResource('asset/pipeline/less/less-1.7.0.js', classLoader)
       def compileJsResource  = new ClassPathResource('asset/pipeline/less/compile.js', classLoader)
 
       Context cx = Context.enter()
