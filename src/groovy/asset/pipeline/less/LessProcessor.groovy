@@ -16,7 +16,7 @@ class LessProcessor {
   def precompilerMode
 
   LessProcessor(precompiler=false){
-    this.precompilerMode = precompiler
+    this.precompilerMode = precompiler ? true : false
     try {
       classLoader = getClass().getClassLoader()
 

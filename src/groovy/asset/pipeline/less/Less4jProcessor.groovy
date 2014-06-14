@@ -13,7 +13,7 @@ class Less4jProcessor {
   def precompilerMode
 
   Less4jProcessor(precompiler=false){
-    this.precompilerMode = precompiler
+    this.precompilerMode = precompiler ? true : false
   }
 
 
