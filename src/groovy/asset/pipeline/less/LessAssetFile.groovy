@@ -11,7 +11,7 @@ class LessAssetFile extends AbstractAssetFile {
 	static processors = [CssProcessor]
 	static compilerMode = 'standard'
 
-	String processedStream(Boolean precompiler) {
+	String processedStream(precompiler) {
 		def fileText
 		def skipCache = precompiler ?: (!processors || processors.size() == 0)
 

@@ -5,15 +5,19 @@ import com.github.sommeri.less4j.LessCompiler
 import com.github.sommeri.less4j.core.ThreadUnsafeLessCompiler
 import groovy.util.logging.Log4j
 import asset.pipeline.CacheManager
+import com.github.sommeri.less4j.*
+import com.github.sommeri.less4j.core.*
 
 @Log4j
 class Less4jProcessor {
+  
+  def precompilerMode
 
-    def precompilerMode
+  Less4jProcessor(precompiler=false){
+    this.precompilerMode = precompiler ? true : false
+  }
+    
 
-    Less4jProcessor(precompiler = false) {
-        this.precompilerMode = precompiler
-    }
 
     def process(input, assetFile) {
         try {
