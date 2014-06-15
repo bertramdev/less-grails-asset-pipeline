@@ -3,21 +3,17 @@ package asset.pipeline.less
 import asset.pipeline.AssetHelper
 import com.github.sommeri.less4j.LessCompiler
 import com.github.sommeri.less4j.core.ThreadUnsafeLessCompiler
+import com.github.sommeri.less4j_javascript.Less4jJavascript
 import groovy.util.logging.Log4j
-import asset.pipeline.CacheManager
-import com.github.sommeri.less4j.*
-import com.github.sommeri.less4j.core.*
 
 @Log4j
 class Less4jProcessor {
-  
-  def precompilerMode
 
-  Less4jProcessor(precompiler=false){
-    this.precompilerMode = precompiler ? true : false
-  }
-    
+    def precompilerMode
 
+    Less4jProcessor(precompiler = false) {
+        this.precompilerMode = precompiler ? true : false
+    }
 
     def process(input, assetFile) {
         try {
