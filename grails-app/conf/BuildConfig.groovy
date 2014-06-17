@@ -12,13 +12,12 @@ grails.project.dependency.resolution = {
 	}
 
 	dependencies {
-		compile "com.github.sommeri:less4j:1.3.0"
+		compile "com.github.sommeri:less4j:1.6.0"
+        compile "com.github.sommeri:less4j-javascript:0.0.1"
 	}
 
 	plugins {
-
-		runtime ":asset-pipeline:1.7.0"
-
+		runtime ":asset-pipeline:1.8.11"
 
 		build ':release:2.2.1', ':rest-client-builder:1.0.3', {
 			export = false
