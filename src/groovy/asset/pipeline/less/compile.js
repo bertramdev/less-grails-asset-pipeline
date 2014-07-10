@@ -8,7 +8,7 @@ var compile = function(fileText, paths) {
     parser.parse(fileText, function (e, tree) {
 
         if (tree)
-            result = tree.toCSS({ compress: true });
+            result = tree.toCSS({ compress: false });
 
         if (e instanceof Object) {
             Packages.asset.pipeline.less.LessProcessor.print('There is '+e.type+' Error '+e.message+' on line '+e.line+' in column '+e.column);
