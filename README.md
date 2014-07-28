@@ -33,13 +33,12 @@ Including Less files into your GSP files is easy but there are a few things wort
 Less4j Support
 --------------
 
-This plugin also supports compiling your less files with less4j instead of the standard less compiler. To Turn this on you must adjust your config:
+This plugin now defaults to compiling your less files with less4j instead of the standard less compiler. To Turn this off you must adjust your config:
 
 ```
-grails.assets.less.compiler = 'less4j'
+grails.assets.less.compiler = 'standard'
 ```
 
-Get Ready for a SIGNIFICANT **Performance** boost!
 
 Production
 ----------
