@@ -1,6 +1,9 @@
 .DS_Store
+.settings
 /target
+/target-eclipse
 plugin.xml
 *.log
 *.zip
 /web-app
+
