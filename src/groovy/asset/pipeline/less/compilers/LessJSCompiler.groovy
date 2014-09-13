@@ -10,10 +10,12 @@ import org.springframework.core.io.ClassPathResource
 
 import asset.pipeline.AssetFile
 import asset.pipeline.AssetHelper
+import asset.pipeline.CacheManager
 import asset.pipeline.less.LessAssetFile
 
 @Log4j
 class LessJSCompiler extends A_LessCompilerImpl {
+  public static final java.lang.ThreadLocal threadLocal = new ThreadLocal();
   Scriptable globalScope
   ClassLoader classLoader
 
@@ -122,5 +124,28 @@ class LessJSCompiler extends A_LessCompilerImpl {
         $e
         """)
     }
+  }
+  
+  static void print(text) {
+    log.debug text
+  }
+
+  static String resolveUri(String path, NativeArray paths) {
+    def assetFile = threadLocal.get();
+    log.debug "resolveUri: path=${path}"
+    for (Object index : paths.getIds()) {
+      def it = paths.get(index, null)
+      def file = new File(it, path)
+      log.trace "test exists: ${file}"
+      if (file.exists()) {
+        log.trace "found file: ${file}"
+        if (assetFile) {
+          CacheManager.addCacheDependency(assetFile.file.canonicalPath, file)
+        }
+        return file.toURI().toString()
+      }
+    }
+
+    return null
   }
 }
