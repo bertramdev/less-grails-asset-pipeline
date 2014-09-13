@@ -11,11 +11,10 @@ import org.springframework.core.io.ClassPathResource
 import asset.pipeline.AssetFile
 import asset.pipeline.AssetHelper
 import asset.pipeline.CacheManager
-import asset.pipeline.less.LessAssetFile
 
 @Log4j
 class LessJSCompiler extends AbstractLessCompilerImpl {
-  public static final java.lang.ThreadLocal threadLocal = new ThreadLocal();
+  public static final ThreadLocal threadLocal = new ThreadLocal();
   Scriptable globalScope
   ClassLoader classLoader
 
@@ -58,7 +57,7 @@ class LessJSCompiler extends AbstractLessCompilerImpl {
   public def process (String input, AssetFile assetFile) {
     try {
       if (!this.precompilerMode) {
-        LessAssetFile.threadLocal.set(assetFile);
+        threadLocal.set(assetFile);
       }
       def assetRelativePath = relativePath(assetFile.file)
       // def paths = AssetHelper.scopedDirectoryPaths(new File("grails-app/assets").getAbsolutePath())
