@@ -199,7 +199,7 @@ Envjs.uri = function(path, base) {
 
     if (!base) {
 
-        var newurl = new String(Packages.asset.pipeline.less.LessProcessor.resolveUri(path, globalPaths));
+        var newurl = new String(Packages.asset.pipeline.less.compilers.LessJSCompiler.resolveUri(path, globalPaths));
         // console.log('newurl is [%s]', newurl);
         return newurl;
     }
