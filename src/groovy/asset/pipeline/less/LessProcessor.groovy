@@ -8,7 +8,7 @@ import asset.pipeline.less.compilers.*
 
 @Log4j
 class LessProcessor {
-  AbstractLessCompilerImpl compiler
+  AssetCompiler compiler
   
   LessProcessor(AssetCompiler compiler) {
     this.compiler = compiler
