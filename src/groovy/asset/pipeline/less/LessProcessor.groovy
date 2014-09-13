@@ -8,7 +8,7 @@ import asset.pipeline.less.compilers.*
 
 @Log4j
 class LessProcessor {
-  A_LessCompilerImpl compiler
+  AbstractLessCompilerImpl compiler
   
   LessProcessor(AssetCompiler compiler) {
     this.compiler = compiler
@@ -16,7 +16,7 @@ class LessProcessor {
 
   public def process (String input, AssetFile assetFile) {
     
-    A_LessCompilerImpl lessCompiler
+    AbstractLessCompilerImpl lessCompiler
     if ((Holders.grailsApplication.config.grails.assets.less.compiler ?: 'less4j') == 'less4j') {
         lessCompiler = new Less4jCompiler(compiler)
     } else {

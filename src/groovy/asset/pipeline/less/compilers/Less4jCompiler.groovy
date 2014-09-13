@@ -10,7 +10,7 @@ import com.github.sommeri.less4j.core.ThreadUnsafeLessCompiler
 import com.github.sommeri.less4j_javascript.Less4jJavascript
 
 @Log4j
-class Less4jCompiler extends A_LessCompilerImpl {
+class Less4jCompiler extends AbstractLessCompilerImpl {
 
   Less4jCompiler(precompiler = false) {
     super(precompiler)
