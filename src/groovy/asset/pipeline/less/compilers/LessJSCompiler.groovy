@@ -13,7 +13,7 @@ import asset.pipeline.AssetHelper
 import asset.pipeline.CacheManager
 
 @Log4j
-class LessJSCompiler extends AbstractLessCompilerImpl {
+class LessJSCompiler extends AbstractLessCompiler {
   public static final ThreadLocal threadLocal = new ThreadLocal();
   Scriptable globalScope
   ClassLoader classLoader

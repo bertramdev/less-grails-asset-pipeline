@@ -16,7 +16,7 @@ class LessProcessor {
 
   public def process (String input, AssetFile assetFile) {
     
-    AbstractLessCompilerImpl lessCompiler
+    AbstractLessCompiler lessCompiler
     if ((Holders.grailsApplication.config.grails.assets.less.compiler ?: 'less4j') == 'less4j') {
         lessCompiler = new Less4jCompiler(compiler)
     } else {

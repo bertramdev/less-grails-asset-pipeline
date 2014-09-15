@@ -3,11 +3,11 @@ package asset.pipeline.less.compilers
 import asset.pipeline.AssetFile
 import asset.pipeline.AssetHelper
 
-abstract class AbstractLessCompilerImpl {
+abstract class AbstractLessCompiler {
 
   def precompilerMode
 
-  AbstractLessCompilerImpl(precompiler = false) {
+  AbstractLessCompiler(precompiler = false) {
     this.precompilerMode = precompiler ? true : false
   }
 
