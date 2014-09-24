@@ -12,7 +12,7 @@ grails.project.dependency.resolution = {
 	}
 
 	dependencies {
-		compile "com.github.sommeri:less4j:1.6.0"
+		compile "com.github.sommeri:less4j:1.8.2"
         compile "com.github.sommeri:less4j-javascript:0.0.1"
 	}
 

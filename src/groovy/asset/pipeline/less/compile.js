@@ -11,7 +11,7 @@ var compile = function(fileText, paths) {
             result = tree.toCSS({ compress: false });
 
         if (e instanceof Object) {
-            Packages.asset.pipeline.less.LessProcessor.print('There is '+e.type+' Error '+e.message+' on line '+e.line+' in column '+e.column);
+            Packages.asset.pipeline.less.compilers.LessJSCompiler.print('There is '+e.type+' Error '+e.message+' on line '+e.line+' in column '+e.column);
             throw e;
         }
 
