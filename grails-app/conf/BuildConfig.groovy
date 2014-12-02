@@ -9,15 +9,15 @@ grails.project.dependency.resolution = {
 		grailsCentral()
 		grailsPlugins()
 		mavenCentral()
+		jcenter()
 	}
 
 	dependencies {
-		compile "com.github.sommeri:less4j:1.6.0"
-        compile "com.github.sommeri:less4j-javascript:0.0.1"
+		compile 'com.bertramlabs.plugins:less-asset-pipeline:2.0.7'
 	}
 
 	plugins {
-		runtime ":asset-pipeline:1.9.2"
+		runtime ":asset-pipeline:2.0.8"
 
 		build ':release:2.2.1', ':rest-client-builder:1.0.3', {
 			export = false
