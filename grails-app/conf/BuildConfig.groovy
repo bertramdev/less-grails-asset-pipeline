@@ -13,12 +13,7 @@ grails.project.dependency.resolution = {
 	}
 
 	dependencies {
-<<<<<<< HEAD
 		compile 'com.bertramlabs.plugins:less-asset-pipeline:2.0.7'
-=======
-		compile "com.github.sommeri:less4j:1.8.2"
-        compile "com.github.sommeri:less4j-javascript:0.0.1"
->>>>>>> 3733184f7f45eba6175e64143b9d7be0d4b9f74a
 	}
 
 	plugins {
