@@ -13,11 +13,11 @@ grails.project.dependency.resolution = {
 	}
 
 	dependencies {
-		compile 'com.bertramlabs.plugins:less-asset-pipeline:2.1.1'
+		compile 'com.bertramlabs.plugins:less-asset-pipeline:2.3.0'
 	}
 
 	plugins {
-		runtime ":asset-pipeline:2.2.3"
+		runtime ":asset-pipeline:2.3.0"
 
 		build ':release:2.2.1', ':rest-client-builder:1.0.3', {
 			export = false
