@@ -1,5 +1,5 @@
 class LessAssetPipelineGrailsPlugin {
-    def version = "2.6.4"
+    def version = "2.7.0"
     def grailsVersion = "2.2 > *"
     def title = "LESS Asset-Pipeline Plugin"
     def author = "David Estes"
