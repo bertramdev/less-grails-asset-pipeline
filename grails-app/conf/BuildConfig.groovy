@@ -17,7 +17,7 @@ grails.project.dependency.resolution = {
 	}
 
 	plugins {
-		runtime ":asset-pipeline:2.11.0"
+		runtime ":asset-pipeline:2.12.3"
 
 		build ':release:3.1.2', ':rest-client-builder:1.0.3', {
 			export = false
