@@ -13,7 +13,7 @@ grails.project.dependency.resolution = {
 	}
 
 	dependencies {
-		compile 'com.bertramlabs.plugins:less-asset-pipeline:2.11.0'
+		compile 'com.bertramlabs.plugins:less-asset-pipeline:2.12.3'
 	}
 
 	plugins {
